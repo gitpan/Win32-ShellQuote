@@ -4,7 +4,7 @@
       "Graham Knop <haarg@haarg.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -25,7 +25,7 @@
             "Capture::Tiny" : "0.12",
             "File::Basename" : "0",
             "File::Spec" : "0",
-            "Test::More" : "0",
+            "Test::More" : "0.94",
             "Try::Tiny" : "0"
          }
       },
@@ -44,5 +44,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.001001"
+   "version" : "0.002000"
 }

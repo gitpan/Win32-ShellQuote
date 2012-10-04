@@ -4,7 +4,7 @@ use warnings FATAL => 'all';
 use Exporter qw(import);
 use Carp;
 
-our $VERSION = '0.001001';
+our $VERSION = '0.002000';
 $VERSION = eval $VERSION;
 
 $Carp::Internal{ (__PACKAGE__) }++;
@@ -81,62 +81,22 @@ sub quote_literal {
         # no quoting needed
     }
     else {
-        my @text = split //, $text;
-        $text = q{"};
-        for (my $i = 0; ; $i++) {
-            my $bs_count = 0;
-            while ( $i < @text && $text[$i] eq "\\" ) {
-                $i++;
-                $bs_count++;
-            }
-            if ($i > $#text) {
-                $text .= "\\" x ($bs_count * 2);
-                last;
-            }
-            elsif ($text[$i] eq q{"}) {
-                $text .= "\\" x ($bs_count * 2 + 1);
-            }
-            else {
-                $text .= "\\" x $bs_count;
-            }
-            $text .= $text[$i];
-        }
-        $text .= q{"};
+        $text =~ s{(\\*)(?="|\z)}{$1$1}g;
+        $text =~ s{"}{\\"}g;
+        $text = qq{"$text"};
     }
 
     return $text;
 }
 
-# direct port of code from win32.c
+# derived from rules in code in win32.c
 sub _has_shell_metachars {
     my $string = shift;
-    my $inquote = 0;
-    my $quote = '';
 
-    my @string = split //, $string;
-    for my $char (@string) {
-        if ($char eq q{%}) {
-            return 1;
-        }
-        elsif ($char eq q{'} || $char eq q{"}) {
-            if ($inquote) {
-                if ($char eq $quote) {
-                    $inquote = 0;
-                    $quote = '';
-                }
-            }
-            else {
-                $quote = $char;
-                $inquote++;
-            }
-        }
-        elsif ($char eq q{<} || $char eq q{>} || $char eq q{|}) {
-            if ( ! $inquote) {
-                return 1;
-            }
-        }
-    }
-    return;
+    return 1
+        if $string =~ /%/;
+    $string =~ s/(['"]).*?(\1|\z)//;
+    return $string =~ /[<>|]/;
 }
 
 1;
@@ -203,7 +163,7 @@ based on the number of items quoted.
 
 =head2 quote_system_cmd
 
-Quotes as a single string that will always be run with F<cmd.exe>
+Quotes as a single string that will always be run with F<cmd.exe>.
 
 =head2 quote_literal
 
