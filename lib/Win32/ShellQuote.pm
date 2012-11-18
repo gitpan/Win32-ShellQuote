@@ -4,7 +4,7 @@ use warnings FATAL => 'all';
 use Exporter qw(import);
 use Carp;
 
-our $VERSION = '0.002000';
+our $VERSION = '0.002001';
 $VERSION = eval $VERSION;
 
 $Carp::Internal{ (__PACKAGE__) }++;
@@ -77,7 +77,7 @@ sub quote_literal {
 
     # basic argument quoting.  uses backslashes and quotes to escape
     # everything.
-    if (!$force && $text ne '' && $text !~ /[ \t\n\v"]/) {
+    if (!$force && $text ne '' && $text !~ /[ \t\n\x0b"]/) {
         # no quoting needed
     }
     else {
@@ -195,7 +195,11 @@ haarg - Graham Knop (cpan:HAARG) <haarg@haarg.org>
 
 =head1 CONTRIBUTORS
 
-Mithaldu - Christian Walde (cpan:MITHALDU) <walde.christian@googlemail.com>
+=over 8
+
+=item Mithaldu - Christian Walde (cpan:MITHALDU) <walde.christian@googlemail.com>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
