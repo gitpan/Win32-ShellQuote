@@ -1,29 +1,28 @@
 ---
 abstract: 'Quote argument lists for Win32'
 author:
-  - 'Graham Knop <haarg@haarg.org>'
+  - 'haarg - Graham Knop (cpan:HAARG) <haarg@haarg.org>'
 build_requires:
-  Capture::Tiny: 0.12
-  File::Basename: 0
-  File::Spec: 0
-  Test::More: 0.94
-  Try::Tiny: 0
-configure_requires:
-  ExtUtils::MakeMaker: 6.30
+  Capture::Tiny: '0.12'
+  File::Basename: '0'
+  File::Spec: '0'
+  Test::More: '0.94'
+  Try::Tiny: '0'
 dynamic_config: 0
-generated_by: 'ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921'
+generated_by: 'ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.141520'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Win32-ShellQuote
 no_index:
   directory:
     - t
     - inc
 requires:
-  Carp: 0
-  Exporter: 0
-  strict: 0
-  warnings: 0
-version: 0.002001
+  perl: '5.006'
+resources:
+  bugtracker: https://rt.cpan.org/Dist/Display.html?Name=Win32-ShellQuote
+  license: http://dev.perl.org/licenses/
+  repository: git://github.com/haarg/Win32-ShellQuote.git
+version: '0.002002'

@@ -1,10 +1,10 @@
 {
    "abstract" : "Quote argument lists for Win32",
    "author" : [
-      "Graham Knop <haarg@haarg.org>"
+      "haarg - Graham Knop (cpan:HAARG) <haarg@haarg.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.141520",
    "license" : [
       "perl_5"
    ],
@@ -20,7 +20,14 @@
       ]
    },
    "prereqs" : {
-      "build" : {
+      "build" : {},
+      "configure" : {},
+      "runtime" : {
+         "requires" : {
+            "perl" : "5.006"
+         }
+      },
+      "test" : {
          "requires" : {
             "Capture::Tiny" : "0.12",
             "File::Basename" : "0",
@@ -28,21 +35,22 @@
             "Test::More" : "0.94",
             "Try::Tiny" : "0"
          }
-      },
-      "configure" : {
-         "requires" : {
-            "ExtUtils::MakeMaker" : "6.30"
-         }
-      },
-      "runtime" : {
-         "requires" : {
-            "Carp" : "0",
-            "Exporter" : "0",
-            "strict" : "0",
-            "warnings" : "0"
-         }
       }
    },
    "release_status" : "stable",
-   "version" : "0.002001"
+   "resources" : {
+      "bugtracker" : {
+         "mailto" : "bug-Win32-ShellQuote@rt.cpan.org",
+         "web" : "https://rt.cpan.org/Dist/Display.html?Name=Win32-ShellQuote"
+      },
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ],
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/haarg/Win32-ShellQuote.git",
+         "web" : "https://github.com/haarg/Win32-ShellQuote"
+      }
+   },
+   "version" : "0.002002"
 }

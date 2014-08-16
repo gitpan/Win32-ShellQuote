@@ -1,13 +1,11 @@
 package Win32::ShellQuote;
 use strict;
 use warnings FATAL => 'all';
-use Exporter qw(import);
+use base 'Exporter';
 use Carp;
 
-our $VERSION = '0.002001';
+our $VERSION = '0.002002';
 $VERSION = eval $VERSION;
-
-$Carp::Internal{ (__PACKAGE__) }++;
 
 our @EXPORT_OK = qw(
     quote_native
@@ -30,6 +28,7 @@ sub quote_cmd {
 }
 
 sub quote_system_list {
+    # have to force quoting, or perl might try to use cmd anyway
     return map { quote_literal($_, 1) } @_;
 }
 
@@ -197,7 +196,7 @@ haarg - Graham Knop (cpan:HAARG) <haarg@haarg.org>
 
 =over 8
 
-=item Mithaldu - Christian Walde (cpan:MITHALDU) <walde.christian@googlemail.com>
+=item * Mithaldu - Christian Walde (cpan:MITHALDU) <walde.christian@googlemail.com>
 
 =back
 
